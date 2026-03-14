@@ -1,24 +1,18 @@
-# README
+# Rails Public API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails Public API is a personal learning project for practicing Ruby on Rails as a backend framework (API only).
+The focus is building a JSON REST API and getting comfortable with common Rails API patterns (routing, controllers, serialization, validations, and error handling).
 
-Things you may want to cover:
+## Stack
 
-* Ruby version
+- [Ruby on Rails](https://rubyonrails.org/)
+- [Hotwire](https://hotwired.dev/)
+- [SQLite3](https://www.sqlite.org/index.html)
 
-* System dependencies
+## Local setup (native)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone the repo.
+2. Install the [Ruby](https://www.ruby-lang.org/en/) version in `.ruby-version`.
+3. Install [SQLite3](https://www.sqlite.org/index.html).
+4. Run `bin/setup` to install gems and set up the database.
+5. Run `bin/rails server` to start the app on `http://localhost:3000`.
