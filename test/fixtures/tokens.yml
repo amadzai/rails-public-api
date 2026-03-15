@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coingecko_id: MyString
+  symbol: MyString
+  name: MyString
+  image: MyString
+  current_price: 9.99
+  market_cap: 9.99
+  market_cap_rank: 1
+  total_volume: 9.99
+  price_change_percentage_24h: 9.99
+  last_ingested_at: 2026-03-15 23:12:53
+
+two:
+  coingecko_id: MyString
+  symbol: MyString
+  name: MyString
+  image: MyString
+  current_price: 9.99
+  market_cap: 9.99
+  market_cap_rank: 1
+  total_volume: 9.99
+  price_change_percentage_24h: 9.99
+  last_ingested_at: 2026-03-15 23:12:53
