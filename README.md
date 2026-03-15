@@ -7,7 +7,6 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
 
 - [Ruby on Rails](https://rubyonrails.org/)
 - [Hotwire](https://hotwired.dev/)
-- [SQLite3](https://www.sqlite.org/index.html)
 
 ## Local setup (native)
 
