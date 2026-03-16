@@ -13,8 +13,9 @@
 ActiveRecord::Schema[8.1].define(version: 2026_03_15_151253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pgcrypto"
 
-  create_table "tokens", force: :cascade do |t|
+  create_table "tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "coingecko_id", null: false
     t.datetime "created_at", null: false
     t.decimal "current_price", precision: 20, scale: 8, default: "0.0", null: false
