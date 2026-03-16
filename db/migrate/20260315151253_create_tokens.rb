@@ -1,6 +1,8 @@
 class CreateTokens < ActiveRecord::Migration[8.1]
   def change
-    create_table :tokens do |t|
+    enable_extension "pgcrypto" unless extension_enabled?("pgcrypto")
+
+    create_table :tokens, id: :uuid do |t|
       t.string  :coingecko_id, null: false
       t.string  :symbol, null: false
       t.string  :name, null: false
