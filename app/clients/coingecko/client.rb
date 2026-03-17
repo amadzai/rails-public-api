@@ -27,7 +27,16 @@ module Coingecko
 
     def markets(vs_currency: DEFAULT_VS_CURRENCY, per_page: 10, page: 1)
       uri = URI("#{@base_url}#{MARKETS_PATH}")
-      uri.query = URI.encode_www_form(markets_query(vs_currency:, per_page:, page:))
+      uri.query = URI.encode_www_form(
+        {
+          vs_currency:,
+          order: DEFAULT_ORDER,
+          per_page:,
+          page:,
+          sparkline: false,
+          price_change_percentage: DEFAULT_PRICE_CHANGE_PERCENTAGE
+        }
+      )
 
       request = build_request(uri)
 
@@ -56,17 +65,6 @@ module Coingecko
     end
 
     private
-
-    def markets_query(vs_currency:, per_page:, page:)
-      {
-        vs_currency:,
-        order: DEFAULT_ORDER,
-        per_page:,
-        page:,
-        sparkline: false,
-        price_change_percentage: DEFAULT_PRICE_CHANGE_PERCENTAGE
-      }
-    end
 
     def build_request(uri)
       request = Net::HTTP::Get.new(uri)
