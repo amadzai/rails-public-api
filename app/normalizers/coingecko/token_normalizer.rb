@@ -21,7 +21,7 @@ module Coingecko
 
       {
         coingecko_id: required_string("id"),
-        symbol: required_string("symbol").downcase,
+        symbol: required_string("symbol"),
         name: required_string("name"),
         image: optional_string("image"),
         current_price: required_decimal("current_price"),
@@ -54,14 +54,16 @@ module Coingecko
     end
 
     def optional_string(key)
-      value = fetch_value(key)
-      return nil if value.nil?
+      value = fetch_value(key).to_s.strip
+      return nil if value.empty?
 
-      value.to_s
+      value
     end
 
     def required_decimal(key)
-      BigDecimal(fetch_value(key).to_s)
+      value = fetch_value(key)
+
+      BigDecimal(value.to_s)
     rescue ArgumentError
       raise Error, "Invalid decimal value for key: #{key}"
     end
