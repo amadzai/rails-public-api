@@ -1,5 +1,9 @@
 module Api
   class TokensController < ApplicationController
+    rate_limit to: 10, within: 1.hour, by: -> { request.remote_ip }, with: -> {
+      render json: { error: "Rate limit exceeded. Try again in 1 hour." }, status: :too_many_requests
+    }
+
     DEFAULT_LIMIT = 10
     MAX_LIMIT = 100
 
