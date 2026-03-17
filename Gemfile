@@ -55,6 +55,8 @@ group :development, :test do
   gem "dotenv-rails"
 
   gem "ruby-lsp", require: false
-
   gem "ruby-lsp-rails", require: false
+
+  gem "rspec-rails"
+  gem "rswag-specs"
 end
