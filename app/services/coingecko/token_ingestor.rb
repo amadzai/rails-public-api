@@ -18,7 +18,7 @@ module Coingecko
       attributes = items.map { |item| TokenNormalizer.call(item, ingested_at: @ingested_at) }
       return { fetched: 0, upserted: 0 } if attributes.empty?
 
-      Token.upsert_all(
+      Token.upsert_all( # rubocop:disable Rails/SkipsModelValidations
         attributes,
         unique_by: UPSERT_UNIQUE_INDEX,
         record_timestamps: true
