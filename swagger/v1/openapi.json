@@ -1,0 +1,212 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Rails Public API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tokens",
+      "description": "Token read endpoints"
+    }
+  ],
+  "paths": {
+    "/api/tokens": {
+      "get": {
+        "tags": ["Tokens"],
+        "summary": "List tokens",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "description": "Maximum number of tokens to return."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Token"
+                      }
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tokens/{id}": {
+      "get": {
+        "tags": ["Tokens"],
+        "summary": "Show token by CoinGecko id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "CoinGecko id."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Token"
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Token not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tokens/by_symbol/{symbol}": {
+      "get": {
+        "tags": ["Tokens"],
+        "summary": "Show token by symbol",
+        "parameters": [
+          {
+            "name": "symbol",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token symbol."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Token"
+                    }
+                  },
+                  "required": ["data"]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Token not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Token": {
+        "type": "object",
+        "properties": {
+          "coingecko_id": {
+            "type": "string"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "image": {
+            "type": ["string", "null"]
+          },
+          "current_price": {
+            "type": "string",
+            "description": "Decimal serialized as string."
+          },
+          "market_cap": {
+            "type": "string",
+            "description": "Decimal serialized as string."
+          },
+          "market_cap_rank": {
+            "type": ["integer", "null"]
+          },
+          "total_volume": {
+            "type": ["string", "null"],
+            "description": "Decimal serialized as string when present."
+          },
+          "price_change_percentage_24h": {
+            "type": ["string", "null"],
+            "description": "Decimal serialized as string when present."
+          },
+          "last_ingested_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "coingecko_id",
+          "symbol",
+          "name",
+          "current_price",
+          "market_cap",
+          "last_ingested_at"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": ["error"]
+      }
+    }
+  }
+}
