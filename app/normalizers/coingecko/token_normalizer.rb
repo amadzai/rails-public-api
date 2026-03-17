@@ -4,8 +4,8 @@ module Coingecko
   class TokenNormalizer
     class Error < StandardError; end
 
-    REQUIRED_STRING_KEYS = %w[id symbol name].freeze
-    REQUIRED_DECIMAL_KEYS = %w[current_price market_cap].freeze
+    REQUIRED_STRING_KEYS = %w[id symbol name]
+    REQUIRED_DECIMAL_KEYS = %w[current_price market_cap]
 
     def self.call(item, ingested_at: Time.current)
       new(item, ingested_at:).call
