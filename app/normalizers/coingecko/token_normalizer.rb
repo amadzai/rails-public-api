@@ -43,7 +43,7 @@ module Coingecko
     end
 
     def fetch_value(key)
-      @item[key] || @item[key.to_sym]
+      @item[key].nil? ? @item[key.to_sym] : @item[key]
     end
 
     def required_string(key)
