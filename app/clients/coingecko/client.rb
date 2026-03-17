@@ -12,13 +12,15 @@ module Coingecko
     MARKETS_PATH = "/coins/markets"
 
     def initialize(
+      api_key: ENV.fetch("COINGECKO_API_KEY"),
       base_url: ENV.fetch("COINGECKO_BASE_URL", "https://api.coingecko.com/api/v3"),
-      api_key: ENV["COINGECKO_API_KEY"],
       api_key_header: ENV.fetch("COINGECKO_API_KEY_HEADER", "x-cg-demo-api-key"),
       timeout: DEFAULT_TIMEOUT_SECONDS
     )
+      @api_key = api_key.to_s.strip
+      raise Error, "COINGECKO_API_KEY is blank" if @api_key.empty?
+
       @base_url = base_url
-      @api_key = api_key
       @api_key_header = api_key_header
       @timeout = timeout
     end
@@ -69,7 +71,7 @@ module Coingecko
     def build_request(uri)
       request = Net::HTTP::Get.new(uri)
       request["Accept"] = "application/json"
-      request[@api_key_header] = @api_key if @api_key && !@api_key.empty?
+      request[@api_key_header] = @api_key
       request
     end
   end
