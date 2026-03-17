@@ -49,4 +49,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "dotenv-rails"
+
+  gem "ruby-lsp", require: false
+
+  gem "ruby-lsp-rails", require: false
 end
