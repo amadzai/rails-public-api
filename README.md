@@ -62,4 +62,6 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
 
 8. Open API docs to view endpoints:
 
-   - Swagger UI: `http://localhost:3000/api-docs`
+   ```
+   http://localhost:3000/api-docs
+   ```
