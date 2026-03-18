@@ -11,7 +11,7 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
 - [Rswag / OpenAPI (Swagger UI)](https://github.com/rswag/rswag)
 - [CoinGecko API](https://www.coingecko.com/en/api)
 
-## Local setup (native)
+## Local Setup
 
 1. Clone and install dependencies:
 
