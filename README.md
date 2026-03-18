@@ -21,21 +21,19 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
    bundle install
    ```
 
-2. Start PostgreSQL (native or Docker).
-
-   If using Docker for local DB:
-
-   ```bash
-   docker compose up -d
-   ```
-
-3. Configure environment variables:
+2. Configure environment variables:
 
    ```bash
    cp .env.example .env
    ```
 
    Update `.env` with your CoinGecko credentials:
+
+3. Start PostgreSQL (Docker).
+
+   ```bash
+   docker compose up -d
+   ```
 
 4. Prepare the database:
 
