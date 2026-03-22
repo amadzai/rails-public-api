@@ -38,19 +38,19 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
 4. Prepare the database:
 
    ```bash
-   bundle exec rails db:prepare
+   bin/rails db:prepare
    ```
 
 5. Run ingestion once to seed tokens:
 
    ```bash
-   bundle exec rails runner "FetchCryptoDataJob.perform_now"
+   bin/rails runner "FetchCryptoDataJob.perform_now"
    ```
 
 6. Run the API server:
 
    ```bash
-   bundle exec rails server
+   bin/rails server
    ```
 
 7. Configure local hourly ingestion with `whenever`:
