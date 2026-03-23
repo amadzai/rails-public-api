@@ -8,7 +8,7 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
 - [Ruby on Rails 8 (API-only)](https://rubyonrails.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Whenever](https://github.com/javan/whenever)
-- [Rswag / OpenAPI (Swagger UI)](https://github.com/rswag/rswag)
+- [Rswag (Swagger UI)](https://github.com/rswag/rswag)
 - [CoinGecko API](https://www.coingecko.com/en/api)
 
 ## Local Setup
