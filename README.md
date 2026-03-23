@@ -27,9 +27,9 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
    cp .env.example .env
    ```
 
-   Update `.env` with your CoinGecko credentials:
+   Update `.env` with your CoinGecko credentials
 
-3. Start PostgreSQL (Docker).
+3. Start PostgreSQL (Docker):
 
    ```bash
    docker compose up -d
