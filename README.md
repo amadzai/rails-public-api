@@ -1,14 +1,17 @@
 # Rails Public API
 
 Rails Public API is a personal learning project for practicing Ruby on Rails as a backend framework (API only).
-The focus is building a JSON REST API and getting comfortable with common Rails API patterns (routing, controllers, serialization, and error handling), plus a real ingestion flow (hourly): fetch crypto market data from CoinGecko, normalize it, store it in PostgreSQL, and serve it through public API endpoints.
+
+The focus is building a JSON REST API with common Rails API patterns (routing, controllers, serialization), and an hourly ingestion flow that fetches crypto market data from CoinGecko.
+
+The data is then normalized, stored in a PostgreSQL DB, and served through public (local) API endpoints.
 
 ## Stack
 
 - [Ruby on Rails 8 (API-only)](https://rubyonrails.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Whenever](https://github.com/javan/whenever)
-- [Rswag (Swagger UI)](https://github.com/rswag/rswag)
+- [Rswag](https://github.com/rswag/rswag)
 - [CoinGecko API](https://www.coingecko.com/en/api)
 
 ## Local Setup
@@ -29,39 +32,27 @@ The focus is building a JSON REST API and getting comfortable with common Rails 
 
    Update `.env` with your CoinGecko credentials
 
-3. Start PostgreSQL (Docker):
+3. Start Services (Web / Puma Server & PostgreSQL DB):
 
    ```bash
    docker compose up -d
    ```
 
-4. Prepare the database:
+4. Run ingestion once to seed tokens:
 
    ```bash
-   bin/rails db:prepare
+   docker compose exec web bin/rails runner "FetchCryptoDataJob.perform_now"
    ```
 
-5. Run ingestion once to seed tokens:
-
-   ```bash
-   bin/rails runner "FetchCryptoDataJob.perform_now"
-   ```
-
-6. Run the API server:
-
-   ```bash
-   bin/rails server
-   ```
-
-7. Configure local hourly ingestion with `whenever`:
+5. Configure local hourly ingestion with `whenever`:
 
    ```bash
    bundle exec whenever --update-crontab rails-public-api --set environment=development
    crontab -l
    ```
 
-8. Open API docs to view endpoints:
+6. Open API docs to view endpoints:
 
    ```
-   http://localhost:3000/api-docs
+   http://localhost:3001/api-docs
    ```
