@@ -4,7 +4,7 @@ Rails Public API is a personal learning project for practicing Ruby on Rails as 
 
 The focus is building a JSON REST API with common Rails API patterns (routing, controllers, serialization), and an hourly ingestion flow that fetches crypto market data from CoinGecko.
 
-The data is then normalized, stored in a PostgreSQL DB, and served through public (local) API endpoints.
+The data is then normalized, stored in a Postgres DB, and served through public (local) API endpoints.
 
 ## Stack
 
